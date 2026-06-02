@@ -8,24 +8,31 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post("/roadmap", async (req, res) => {
+// ROUTE
+app.post("/generate-roadmap", async (req, res) => {
+
   const { career } = req.body;
 
   try {
+
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
         model: "openai/gpt-3.5-turbo",
+
         messages: [
           {
             role: "user",
-            content: `Create a detailed roadmap for becoming a ${career}. 
-            Include:
-            - skills to learn
-            - tools/technologies
-            - project ideas
-            - career tips
-            Add suitable emojis for every point.
+            content: `
+Create a detailed roadmap for becoming a ${career}.
+
+Include:
+- skills to learn
+- tools/technologies
+- project ideas
+- career tips
+
+Add emojis for every point.
 
 Example:
 📘 Learn Basics
@@ -33,10 +40,12 @@ Example:
 🧠 Practice DSA
 🚀 Apply for Jobs
 
-            Give everything in proper step-by-step points.`,
+Give everything in step-by-step numbered points.
+`,
           },
         ],
       },
+
       {
         headers: {
           Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
@@ -53,14 +62,22 @@ Example:
     });
 
   } catch (error) {
-    console.log(error.response?.data || error.message);
 
-    res.json({
-      roadmap: "Error generating roadmap",
+    console.log(
+      error.response?.data || error.message
+    );
+
+    res.status(500).json({
+      roadmap: "❌ Error generating roadmap",
     });
+
   }
+
 });
 
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+// PORT
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
