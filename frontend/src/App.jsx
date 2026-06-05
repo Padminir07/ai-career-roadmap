@@ -31,7 +31,7 @@ function App() {
     try {
 
       const response = await fetch(
-         "https://ai-career-roadmap-slrp.onrender.com/generate-roadmap"
+         "https://ai-career-roadmap-slrp.onrender.com/generate-roadmap",
         {
           method: "POST",
           headers: {
