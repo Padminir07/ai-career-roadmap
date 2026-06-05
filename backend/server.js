@@ -18,7 +18,7 @@ app.post("/generate-roadmap", async (req, res) => {
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-         model: "mistralai/mistral-7b-instruct",
+        model: "meta-llama/llama-3-8b-instruct",
 
         messages: [
           {
@@ -26,31 +26,54 @@ app.post("/generate-roadmap", async (req, res) => {
             content: `
 Create a detailed roadmap for becoming a ${career}.
 
-Include:
-- skills to learn
-- tools/technologies
-- project ideas
-- career tips
+Use EXACTLY this structure:
 
-Add emojis for every point.
+📘 Learn the Basics:
+1. Detailed learning point
+2. Detailed learning point
+3. Detailed learning point
 
-Example:
-📘 Learn Basics
-💻 Build Projects
-🧠 Practice DSA
-🚀 Apply for Jobs
+🧠 Develop Skills:
+1. Detailed learning point
+2. Detailed learning point
+3. Detailed learning point
 
-Give everything in step-by-step numbered points.
-`,
-          },
-        ],
+🚀 Build Projects:
+1. Detailed project idea
+2. Detailed project idea
+3. Detailed project idea
+
+💼 Career Growth:
+1. Detailed career tip
+2. Detailed career tip
+3. Detailed career tip
+
+✨ Conclusion:
+Write 2 motivational sentences.
+
+IMPORTANT RULES:
+
+- Do NOT use markdown
+- Do NOT use **
+- Do NOT use *
+- Do NOT create nested numbering
+- Only section headings and numbered points
+- Add emojis only in section headings
+- Each point should be descriptive
+- Each point should contain around 12-20 words
+- Explain what the student should learn or do
+- Keep language simple and beginner friendly
+- Make roadmap practical and realistic
+`
+          }
+        ]
       },
 
       {
         headers: {
           Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
-          "Content-Type": "application/json",
-        },
+          "Content-Type": "application/json"
+        }
       }
     );
 
@@ -58,17 +81,21 @@ Give everything in step-by-step numbered points.
       response.data.choices[0].message.content;
 
     res.json({
-      roadmap,
+      roadmap
     });
 
   } catch (error) {
 
-    console.log(
-      error.response?.data || error.message
-    );
+    console.log("==============");
+    console.log("FULL ERROR");
+    console.log("==============");
+
+    console.log(error.response?.data);
+    console.log(error.response?.status);
+    console.log(error.message);
 
     res.status(500).json({
-      roadmap: "❌ Error generating roadmap",
+      roadmap: "❌ Error generating roadmap"
     });
 
   }

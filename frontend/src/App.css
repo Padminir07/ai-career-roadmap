@@ -1,0 +1,186 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #000;
+  color: white;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.title {
+  font-size: 60px;
+  text-align: center;
+  margin-top: 20px;
+  color: white;
+}
+
+.subtitle {
+  font-size: 22px;
+  color: #cbd5e1;
+  margin-bottom: 30px;
+}
+
+.input-box {
+  width: 500px;
+  max-width: 90%;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #333;
+  background: #111;
+  color: white;
+  font-size: 18px;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+.input-box:focus {
+  border-color: #60a5fa;
+}
+
+.btn {
+  padding: 15px 35px;
+  border: none;
+  border-radius: 12px;
+  background: #2563eb;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #1d4ed8;
+  transform: scale(1.05);
+}
+
+.career-tag {
+  margin-top: 20px;
+  background: #111827;
+  border: 1px solid #334155;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-size: 18px;
+  color: white;
+}
+
+.roadmap-box {
+  width: 1000px;
+  max-width: 95%;
+  margin-top: 40px;
+  background: #111827;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 0 20px rgba(96,165,250,0.15);
+}
+
+.roadmap-content {
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+/* SECTION HEADINGS */
+
+.section-title {
+  color: #60a5fa;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 45px;
+  margin-bottom: 25px;
+}
+
+/* CHECKLIST ITEMS */
+
+.point-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 22px;
+  color: white;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.point-line input {
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  accent-color: #22c55e;
+  cursor: pointer;
+}
+
+.step-number {
+  color: #60a5fa;
+  font-weight: bold;
+}
+
+/* CONCLUSION */
+
+.conclusion-title {
+  color: #60a5fa;
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.conclusion-message {
+  color: #93c5fd;
+  font-size: 21px;
+  line-height: 2;
+  font-weight: 500;
+  background: rgba(96,165,250,0.08);
+  border-left: 4px solid #60a5fa;
+  padding: 18px 20px;
+  border-radius: 12px;
+  margin-top: 15px;
+}
+
+/* DOWNLOAD BUTTON */
+
+.download-btn {
+  margin-top: 35px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 12px;
+  background: #16a34a;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.download-btn:hover {
+  background: #15803d;
+  transform: scale(1.05);
+}
+
+/* LOGOUT */
+
+.logout-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  background: #dc2626;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.logout-btn:hover {
+  background: #b91c1c;
+  transform: scale(1.05);
+}
+.step-number {
+  color: white !important;
+  font-weight: bold;
+}
